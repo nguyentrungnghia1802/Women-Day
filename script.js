@@ -24,7 +24,7 @@ hue = 120,
 limiterTotal = 5,
 limiterTick = 0,
 // this will time the auto launches of fireworks, one launch per 80 loop ticks
-timerTotal = 80,
+timerTotal = 40,
 timerTick = 0,
 mousedown = false,
 // mouse x coordinate,
@@ -170,7 +170,7 @@ ctx.stroke();
 // create particle group/explosion
 function createParticles( x, y ) {
 // increase the particle count for a bigger explosion, beware of the canvas performance hit with the increased particles though
-var particleCount = 30;
+var particleCount = 80;
 while( particleCount-- ) {
 particles.push( new Particle( x, y ) );
 }
@@ -207,7 +207,7 @@ particles[ i ].update( i );
 if( timerTick >= timerTotal ) {
 if( !mousedown ) {
 // start the firework at the bottom middle of the screen, then set the random target coordinates, the random y coordinates will be set within the range of the top half of the screen
-fireworks.push( new Firework( cw / 2, ch, random( 0, cw ), random( 0, ch / 2 ) ) );
+fireworks.push( new Firework( cw / 2, ch, random( 0, cw ), random( ch/2, ch / 1 ) ) );
 timerTick = 0;
 }
 } else {
