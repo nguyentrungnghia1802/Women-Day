@@ -72,9 +72,13 @@
 
 <body>
     <canvas id="canvas">Canvas không hỗ trợ trình duyệt của bạn.</canvas>
+    <div id="image-container" style="display: none; margin-top: 20px;">
+        <img id="gift-image" src="" alt="Hình ảnh phần quà" style="width: 500px; height: auto;">
+    </div>
     <div class="container">
         <div class="message">Nhân dịp 8/3, chúc bạn iu ôm nhiều hoa, chất đầy quà, ăn uống thả ga, được đi chơi xa, sớm
-            ngày có bồ -))</div>
+            ngày
+            có bồ -))</div>
         <div class="message" style="color: aqua;">"Chọn 1 phần quà"</div>
         <div class="gift-container">
             <div class="gift-box" onclick="showMessage(0)"></div>
@@ -87,13 +91,23 @@
     </div>
     <script>
         const messages = [
-            "Chúc mừng bạn đã nhận được một cái ôm!",
-            "Chúc mừng bạn đã nhận được một nụ hôn!",
-            "Chúc mừng bạn đã nhận được cái tát!"
+            "Chúc mừng bạn đã nhận được một vườn hoa!",
+            "Chúc mừng bạn đã nhận được một ngàn điều ước!!",
+            "Chúc mừng bạn đã nhận được một ngàn dollar!"
+        ];
+
+        const images = [
+            "vuon_hoa.jpg", // Hình vườn hoa 🌸
+            "dieu_uoc.jpg", // Hình điều ước ✨
+            "tien.jpg"  // Hình dollar 💰
         ];
 
         function showMessage(index) {
             document.querySelector('.message').textContent = messages[index];
+
+            // Cập nhật hình ảnh phần quà
+            document.getElementById("gift-image").src = images[index];
+            document.getElementById("image-container").style.display = "block";
         }
     </script>
     <script type="text/javascript" src="script.js"></script>
