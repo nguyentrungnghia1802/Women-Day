@@ -20,11 +20,18 @@
 
 /* basic styles for black background and crosshair cursor */
 body {
-    background: #000;
+    background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
     margin: 0;
+    font-family: 'Quicksand', Arial, sans-serif;
+    min-height: 100vh;
 }
 
 canvas {
     cursor: crosshair;
     display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
 }
