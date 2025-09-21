@@ -6,15 +6,17 @@
     <title>Chúc mừng ngày Quốc tế phụ nữ</title>
     <link rel="icon" href="https://anonyviet.com/resource/phaohoa2/favicon.ico" type="image/x-icon" />
     <link href="style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+            font-family: 'Quicksand', Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 35vh;
-            background: black;
+            justify-content: center;
         }
 
         .container {
@@ -22,26 +24,37 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 70vh;
             text-align: center;
+            background: rgba(255,255,255,0.7);
+            border-radius: 32px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            padding: 40px 30px 30px 30px;
+            margin-top: 40px;
         }
 
         .message {
-            font-size: 2em;
-            font-weight: bold;
+            font-size: 2.1em;
+            font-family: 'Pacifico', cursive;
             color: #ff4081;
-            text-align: center;
-            text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.8);
+            text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.3);
             animation: glow 1.5s infinite alternate;
-            margin-bottom: 0px;
-            /* Tăng khoảng cách giữa thông điệp và hộp quà */
+            margin-bottom: 10px;
+        }
+
+        .message.secondary {
+            color: #00bcd4;
+            font-size: 1.3em;
+            font-family: 'Quicksand', Arial, sans-serif;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 8px #fff;
         }
 
         @keyframes glow {
             from {
-                text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.8);
+                text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.5);
             }
-
             to {
                 text-shadow: 4px 4px 20px rgba(255, 64, 129, 1);
             }
@@ -49,44 +62,75 @@
 
         .gift-container {
             display: flex;
-            gap: 20px;
+            gap: 40px;
             justify-content: center;
             align-items: center;
-            height: 15vh;
-            /* Giúp hộp quà nằm giữa màn hình */
+            margin-bottom: 20px;
         }
 
         .gift-box {
-            width: 100px;
-            height: 100px;
-            background: url('https://cdn-icons-png.flaticon.com/512/869/869869.png') no-repeat center/cover;
+            width: 110px;
+            height: 110px;
+            background: url('hop_qua.png') no-repeat center/cover;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(255, 64, 129, 0.15), 0 1.5px 8px 0 #fff;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.25s, box-shadow 0.25s;
+            border: 3px solid #fff3;
+            position: relative;
+            overflow: hidden;
+        }
+        .gift-box:hover {
+            transform: scale(1.13) rotate(-4deg);
+            box-shadow: 0 8px 32px 0 #ff4081bb, 0 2px 12px 0 #fff;
+            border-color: #ff4081;
         }
 
-        .gift-box:hover {
-            transform: scale(1.1);
+        #image-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 0.7s;
+        }
+        #gift-image {
+            width: 350px;
+            max-width: 90vw;
+            border-radius: 24px;
+            box-shadow: 0 4px 32px 0 #ff4081aa, 0 1.5px 8px 0 #fff;
+            border: 4px solid #fff;
+            margin-bottom: 10px;
+            background: #fff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .credit {
+            opacity: 0.7;
+            margin: 10px;
+            font-size: 1.3em;
+            color: #555;
+            font-family: 'Quicksand', Arial, sans-serif;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 
 <body>
     <canvas id="canvas">Canvas không hỗ trợ trình duyệt của bạn.</canvas>
-    <div id="image-container" style="display: none; margin-top: 20px;">
-        <img id="gift-image" src="" alt="Hình ảnh phần quà" style="width: 500px; height: auto;">
-    </div>
     <div class="container">
-        <div class="message">Nhân dịp 8/3, chúc bạn iu ôm nhiều hoa, chất đầy quà, ăn uống thả ga, được đi chơi xa, sớm
-            ngày
-            có bồ -))</div>
-        <div class="message" style="color: aqua;">"Chọn 1 phần quà"</div>
+        <div class="message">Nhân dịp 8/3, chúc bạn iu ôm nhiều hoa, chất đầy quà, ăn uống thả ga, được đi chơi xa, sớm ngày có bồ -))</div>
+        <div class="message secondary">Chọn 1 phần quà bên dưới nhé!</div>
         <div class="gift-container">
             <div class="gift-box" onclick="showMessage(0)"></div>
             <div class="gift-box" onclick="showMessage(1)"></div>
             <div class="gift-box" onclick="showMessage(2)"></div>
         </div>
+        <div id="image-container">
+            <img id="gift-image" src="" alt="Hình ảnh phần quà">
+        </div>
     </div>
-    <div style="opacity: 60%;;margin: 10px; font-size: 2em; color: rgb(92, 89, 89);">
+    <div class="credit">
         <p>Created by: Nguyen Trung Nghia</p>
     </div>
     <script>
