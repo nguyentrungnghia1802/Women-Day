@@ -1,160 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
     <meta charset="utf-8" />
-    <title>Chúc mừng ngày Quốc tế phụ nữ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc Mừng Ngày Quốc Tế Phụ Nữ 8/3 🌸</title>
     <link rel="icon" href="https://anonyviet.com/resource/phaohoa2/favicon.ico" type="image/x-icon" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link href="style.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
-            font-family: 'Quicksand', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-            text-align: center;
-            background: rgba(255,255,255,0.7);
-            border-radius: 32px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            padding: 40px 30px 30px 30px;
-            margin-top: 40px;
-        }
-
-        .message {
-            font-size: 2.1em;
-            font-family: 'Pacifico', cursive;
-            color: #ff4081;
-            text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.3);
-            animation: glow 1.5s infinite alternate;
-            margin-bottom: 10px;
-        }
-
-        .message.secondary {
-            color: #00bcd4;
-            font-size: 1.3em;
-            font-family: 'Quicksand', Arial, sans-serif;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 8px #fff;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 2px 2px 10px rgba(255, 64, 129, 0.5);
-            }
-            to {
-                text-shadow: 4px 4px 20px rgba(255, 64, 129, 1);
-            }
-        }
-
-        .gift-container {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .gift-box {
-            width: 110px;
-            height: 110px;
-            background: url('hop_qua.png') no-repeat center/cover;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px 0 rgba(255, 64, 129, 0.15), 0 1.5px 8px 0 #fff;
-            cursor: pointer;
-            transition: transform 0.25s, box-shadow 0.25s;
-            border: 3px solid #fff3;
-            position: relative;
-            overflow: hidden;
-        }
-        .gift-box:hover {
-            transform: scale(1.13) rotate(-4deg);
-            box-shadow: 0 8px 32px 0 #ff4081bb, 0 2px 12px 0 #fff;
-            border-color: #ff4081;
-        }
-
-        #image-container {
-            display: none;
-            margin-top: 30px;
-            animation: fadeIn 0.7s;
-        }
-        #gift-image {
-            width: 350px;
-            max-width: 90vw;
-            border-radius: 24px;
-            box-shadow: 0 4px 32px 0 #ff4081aa, 0 1.5px 8px 0 #fff;
-            border: 4px solid #fff;
-            margin-bottom: 10px;
-            background: #fff;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .credit {
-            opacity: 0.7;
-            margin: 10px;
-            font-size: 1.3em;
-            color: #555;
-            font-family: 'Quicksand', Arial, sans-serif;
-            letter-spacing: 1px;
-        }
-    </style>
 </head>
 
 <body>
-    <canvas id="canvas">Canvas không hỗ trợ trình duyệt của bạn.</canvas>
-    <div class="container">
-    <div class="message">Nhân dịp 8/3, chúc bạn luôn vui vẻ, hạnh phúc, tràn đầy năng lượng tích cực và nhận được thật nhiều yêu thương!</div>
-        <div class="message secondary">Chọn 1 phần quà bên dưới nhé!</div>
-        <div class="gift-container">
-            <div class="gift-box" onclick="showMessage(0)"></div>
-            <div class="gift-box" onclick="showMessage(1)"></div>
-            <div class="gift-box" onclick="showMessage(2)"></div>
+    <!-- Background Canvas for Floating Petals, Hearts & Fireworks -->
+    <canvas id="canvas"></canvas>
+    <!-- Overlay Canvas for Modal Fireworks (renders above modal) -->
+    <canvas id="canvasOverlay"></canvas>
+
+    <!-- Background Music Control -->
+    <div class="music-player" id="musicToggle" title="Bật/Tắt nhạc nền">
+        <div class="vinyl-record" id="vinylRecord">
+            <i class="fa-solid fa-music music-icon"></i>
         </div>
-        <div id="image-container">
-            <img id="gift-image" src="" alt="Hình ảnh phần quà">
+        <span class="music-label">Nhạc nền <span id="musicStatus">Tắt</span></span>
+        <!-- Royalty-free Romantic Piano Audio -->
+        <audio id="bgmAudio" loop preload="auto">
+            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112185.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-wrapper">
+        <!-- Hero Header Section -->
+        <header class="hero-section">
+            <div class="badge-83">
+                <span class="sparkle-icon">✨</span> Ngày 8 Tháng 3 <span class="sparkle-icon">✨</span>
+            </div>
+            <h1 class="main-title">Happy Women's Day!</h1>
+            <p class="subtitle">Tôn vinh vẻ đẹp, sự dịu dàng và những điều tuyệt vời nhất dành cho phái đẹp</p>
+            
+            <!-- Recipient Name Input -->
+            <div class="name-customizer" id="nameForm">
+                <label for="recipientInput" class="name-label"><i class="fa-solid fa-heart pink-heart"></i> Tên cậu là gì?</label>
+                <div class="input-group">
+                    <input type="text" id="recipientInput" placeholder="Nhập tên của bạn (VD: Trâm, Hương, Mai...)" value="" maxlength="25">
+                    <button id="receiveGiftBtn" type="button"><i class="fa-solid fa-gift"></i> Nhận quà</button>
+                </div>
+            </div>
+        </header>
+
+
+
+        <!-- Gift Boxes Showcase -->
+        <section class="gift-section hidden" id="giftSection">
+            <h2 class="gift-section-title">🎁 Chọn 1 Hộp Quà May Mắn Bên Dưới 🎁</h2>
+            <p class="gift-section-sub">Mỗi hộp quà chứa đựng một phần quà cùng lời chúc ngọt ngào đặc biệt</p>
+            
+            <div class="gift-container">
+                <!-- Card 1 -->
+                <div class="gift-card" onclick="openGift(0)" tabindex="0" role="button" aria-label="Mở hộp quà 1">
+                    <div class="card-glass-shine"></div>
+                    <div class="gift-tag">Quà số 1</div>
+                    <div class="gift-box-wrapper">
+                        <img src="hop_qua.png" alt="Hộp quà may mắn 1" class="gift-img">
+                        <div class="gift-glow"></div>
+                    </div>
+                    <h3 class="gift-name">Vườn Hoa Rực Rỡ</h3>
+                    <p class="gift-hint">Bấm để khám phá <i class="fa-solid fa-sparkles"></i></p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="gift-card featured" onclick="openGift(1)" tabindex="0" role="button" aria-label="Mở hộp quà 2">
+                    <div class="card-glass-shine"></div>
+                    <div class="gift-tag highlight">Quà Đặc Biệt</div>
+                    <div class="gift-box-wrapper">
+                        <img src="hop_qua.png" alt="Hộp quà may mắn 2" class="gift-img">
+                        <div class="gift-glow"></div>
+                    </div>
+                    <h3 class="gift-name">Ngàn Điều Ước</h3>
+                    <p class="gift-hint">Bấm để khám phá <i class="fa-solid fa-sparkles"></i></p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gift-card" onclick="openGift(2)" tabindex="0" role="button" aria-label="Mở hộp quà 3">
+                    <div class="card-glass-shine"></div>
+                    <div class="gift-tag">Quà số 3</div>
+                    <div class="gift-box-wrapper">
+                        <img src="hop_qua.png" alt="Hộp quà may mắn 3" class="gift-img">
+                        <div class="gift-glow"></div>
+                    </div>
+                    <h3 class="gift-name">Tài Lộc & Hạnh Phúc</h3>
+                    <p class="gift-hint">Bấm để khám phá <i class="fa-solid fa-sparkles"></i></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Featured Wish Card -->
+        <section class="wish-card-container hidden" id="wishSection">
+            <div class="wish-card">
+                <div class="quote-mark start">“</div>
+                <div class="wish-text" id="dynamicWish">
+                    Chúc <span class="recipient-name">Cậu</span> luôn rạng rỡ như những bông hoa ngát hương, xinh đẹp, hạnh phúc và tràn đầy năng lượng tích cực trong ngày 8/3 cũng như suốt 365 ngày trong năm!
+                </div>
+                <div class="quote-mark end">”</div>
+                <div class="wish-author">— Gửi trọn yêu thương <i class="fa-solid fa-heart pink-heart"></i></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Gift Popup Modal -->
+    <div class="modal-overlay" id="giftModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()" aria-label="Đóng">&times;</button>
+            <div class="modal-header">
+                <span class="modal-badge"><i class="fa-solid fa-gift"></i> Món Quà Dành Cho <span class="recipient-name">Cậu</span></span>
+                <h3 class="modal-title" id="modalGiftTitle">Chúc Mừng Bạn!</h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-wrapper">
+                    <img id="modalGiftImage" src="" alt="Hình ảnh món quà">
+                    <div class="image-overlay-glow"></div>
+                </div>
+                <p class="modal-wish-message" id="modalWishMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-action primary" onclick="triggerExtraFireworks()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Bắn Pháo Hoa Mới
+                </button>
+                <button class="btn-action secondary" onclick="closeModal()">
+                    <i class="fa-solid fa-xmark"></i> Đóng
+                </button>
+            </div>
         </div>
     </div>
-    <div class="credit">
-        <p>Created by: Nguyen Trung Nghia</p>
-    </div>
-    <script>
-        const messages = [
-            "Chúc mừng bạn đã nhận được một vườn hoa!",
-            "Chúc mừng bạn đã nhận được một ngàn điều ước!!",
-            "Chúc mừng bạn đã nhận được một ngàn dollar!"
-        ];
 
-        const images = [
-            "vuon_hoa.jpg", // Hình vườn hoa 🌸
-            "dieu_uoc.jpg", // Hình điều ước ✨
-            "tien.jpg"  // Hình dollar 💰
-        ];
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Crafted with <i class="fa-solid fa-heart heart-beat"></i> by <strong>Nguyen Trung Nghia</strong> | Happy Women's Day 🌸</p>
+    </footer>
 
-        function showMessage(index) {
-            document.querySelector('.message').textContent = messages[index];
-
-            // Cập nhật hình ảnh phần quà
-            document.getElementById("gift-image").src = images[index];
-            document.getElementById("image-container").style.display = "block";
-        }
-    </script>
-    <script type="text/javascript" src="script.js"></script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 
 </html>
